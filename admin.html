@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Administrador — EcoBarrio Creativo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🌿%3C/text%3E%3C/svg%3E" />
+<meta name="theme-color" content="#16302a" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="encabezado">
+  <div class="contenedor">
+    <a href="index.html" class="marca"><span class="marca-icono">🌿</span> EcoBarrio Creativo</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">☰</button>
+    <ul class="nav-lista" id="menu-principal">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="catalogo.html">Servicios</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="admin.html" class="activo">Administrador</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="contenido">
+<!-- ---------- Vista de login (visible por defecto) ---------- -->
+<section id="vista-login" class="seccion">
+  <div class="contenedor">
+    <div class="panel-login">
+      <h2>Acceso de administrador</h2>
+      <p class="texto-suave">Solo el equipo de EcoBarrio Creativo puede entrar aquí.</p>
+      <form id="form-login" class="formulario" novalidate>
+        <div class="campo">
+          <label for="login-correo">Correo</label>
+          <input type="email" id="login-correo" required autocomplete="username" />
+        </div>
+        <div class="campo">
+          <label for="login-clave">Contraseña</label>
+          <input type="password" id="login-clave" required minlength="6" autocomplete="current-password" />
+        </div>
+        <button type="submit" class="boton boton-primario" id="btn-login">Ingresar</button>
+        <div id="estado-login" class="mensaje-estado" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Vista de panel (oculta hasta iniciar sesión) ---------- -->
+<section id="vista-panel" class="seccion" style="display:none;">
+  <div class="contenedor">
+    <div class="admin-topbar">
+      <div>
+        <h2>Panel de administrador</h2>
+        <p class="texto-suave" id="texto-sesion"></p>
+      </div>
+      <button id="btn-logout" class="boton boton-oscuro">Cerrar sesión</button>
+    </div>
+
+    <div class="pestanas" role="tablist">
+      <button type="button" class="pestana activa" role="tab" aria-selected="true" data-tab="catalogo">Catálogo</button>
+      <button type="button" class="pestana" role="tab" aria-selected="false" data-tab="mensajes">Mensajes de contacto</button>
+    </div>
+
+    <!-- --- Tab: catálogo --- -->
+    <div id="tab-catalogo">
+      <form id="form-item" class="formulario form-admin">
+        <input type="hidden" id="item-id" />
+        <div class="campo"><label for="item-nombre">Nombre</label><input type="text" id="item-nombre" required maxlength="80" /></div>
+        <div class="campo"><label for="item-categoria">Categoría</label><input type="text" id="item-categoria" placeholder="Ej: Limpieza" required maxlength="40" /></div>
+        <div class="campo"><label for="item-icono">Ícono (emoji)</label><input type="text" id="item-icono" placeholder="🌱" maxlength="4" /></div>
+        <div class="campo campo-ancho"><label for="item-descripcion">Descripción</label><textarea id="item-descripcion" required maxlength="400"></textarea></div>
+        <div class="campo-ancho">
+          <button type="submit" class="boton boton-primario" id="btn-item">Guardar servicio</button>
+        </div>
+        <div id="estado-item" class="mensaje-estado campo-ancho" role="status"></div>
+      </form>
+
+      <div class="tabla-scroll"><table class="tabla">
+        <thead><tr><th>Nombre</th><th>Categoría</th><th>Descripción</th><th>Acciones</th></tr></thead>
+        <tbody id="tabla-catalogo"><tr><td colspan="4">Cargando...</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <!-- --- Tab: mensajes --- -->
+    <div id="tab-mensajes" style="display:none;">
+      <div class="tabla-scroll"><table class="tabla">
+        <thead><tr><th>Fecha</th><th>Nombre</th><th>Correo</th><th>Barrio</th><th>Mensaje</th><th>Acciones</th></tr></thead>
+        <tbody id="tabla-mensajes"><tr><td colspan="6">Cargando...</td></tr></tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

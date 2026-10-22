@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contacto — EcoBarrio Creativo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🌿%3C/text%3E%3C/svg%3E" />
+<meta name="theme-color" content="#16302a" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="encabezado">
+  <div class="contenedor">
+    <a href="index.html" class="marca"><span class="marca-icono">🌿</span> EcoBarrio Creativo</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">☰</button>
+    <ul class="nav-lista" id="menu-principal">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="catalogo.html">Servicios</a></li>
+      <li><a href="contacto.html" class="activo">Contacto</a></li>
+      <li><a href="admin.html">Administrador</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="contenido">
+<section class="seccion">
+  <div class="contenedor grid-2">
+    <div>
+      <div class="kicker">Contacto</div>
+      <h2>Cuéntanos de tu barrio</h2>
+      <p>Escríbenos si quieres organizar una jornada de limpieza, aprender reciclaje creativo o simplemente saber más del proyecto. Respondemos por este mismo medio.</p>
+
+      <form id="form-contacto" class="formulario" novalidate>
+        <div class="campo">
+          <label for="nombre">Nombre *</label>
+          <input type="text" id="nombre" name="nombre" required minlength="2" maxlength="80" autocomplete="name" />
+        </div>
+        <div class="campo">
+          <label for="correo">Correo electrónico *</label>
+          <input type="email" id="correo" name="correo" required maxlength="120" autocomplete="email" />
+        </div>
+        <div class="campo">
+          <label for="barrio">Barrio o sector (opcional)</label>
+          <input type="text" id="barrio" name="barrio" maxlength="80" />
+        </div>
+        <div class="campo">
+          <label for="mensaje">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" required minlength="10" maxlength="1000"></textarea>
+        </div>
+        <button type="submit" class="boton boton-primario" id="btn-enviar">Enviar mensaje</button>
+        <div id="estado-formulario" class="mensaje-estado" role="status"></div>
+      </form>
+    </div>
+
+    <div class="tarjeta">
+      <div class="tarjeta-icono">📍</div>
+      <h3>Otras formas de encontrarnos</h3>
+      <p>Este proyecto nació como parte del programa Jóvenes Creativos, ruta avanzada. Si representas una junta de acción comunal o un colegio interesado en una jornada, cuéntanoslo en el mensaje con el mejor horario para contactarte.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie-columna"><div class="pie-marca">🌿 EcoBarrio Creativo</div></div>
+    <div class="pie-columna">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Servicios</a>
+    </div>
+  </div>
+  <div class="pie-base">© 2026 EcoBarrio Creativo — Proyecto académico, Jóvenes Creativos.</div>
+</footer>
+
+<button id="chat-boton" class="chat-boton" aria-label="Abrir chat de EcoBarrio Creativo" aria-expanded="false" aria-controls="chat-panel">💬</button>
+<div id="chat-panel" class="chat-panel" role="dialog" aria-label="Chat con EcoBarrio Creativo">
+  <div class="chat-cabecera">
+    <strong>Asistente EcoBarrio</strong>
+    <button id="chat-cerrar" aria-label="Cerrar chat">✕</button>
+  </div>
+  <div id="chat-mensajes" class="chat-mensajes">
+    <div class="chat-burbuja bot">¡Hola! 🌱 ¿En qué te puedo ayudar?</div>
+  </div>
+  <form id="chat-form" class="chat-form">
+    <input id="chat-input" type="text" placeholder="Escribe tu pregunta..." autocomplete="off" required />
+    <button type="submit" aria-label="Enviar">➤</button>
+  </form>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/chatbot.js"></script>
+<script src="js/contacto.js"></script>
+</body>
+</html>
